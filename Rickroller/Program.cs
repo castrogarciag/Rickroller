@@ -9,6 +9,7 @@ namespace Rickroller
         {
             try
             {
+                Console.WriteLine("Prepare yourself to be rickrolled...");
                 Process.Start(@"https://www.youtube.com/watch?v=dQw4w9WgXcQ");
                 Console.WriteLine("Congrats, you've been rickrolled");
             }
