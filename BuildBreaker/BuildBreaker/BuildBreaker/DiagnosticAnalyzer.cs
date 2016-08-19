@@ -8,7 +8,7 @@ using Microsoft.CodeAnalysis.CSharp;
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Diagnostics;
 
-namespace BuildBreaker
+namespace BuildBreaker2
 {
     [DiagnosticAnalyzer(LanguageNames.CSharp)]
     public class BuildBreakerAnalyzer : DiagnosticAnalyzer

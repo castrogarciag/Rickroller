@@ -13,7 +13,7 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Rename;
 using Microsoft.CodeAnalysis.Text;
 
-namespace BuildBreaker
+namespace BuildBreaker2
 {
     [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(BuildBreakerCodeFixProvider)), Shared]
     public class BuildBreakerCodeFixProvider : CodeFixProvider
