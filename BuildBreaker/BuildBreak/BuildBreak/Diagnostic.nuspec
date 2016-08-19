@@ -1,19 +1,19 @@
 ﻿<?xml version="1.0"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
   <metadata>
-    <id>BuildBreaker</id>
-    <version>1.0.0.0</version>
-    <title>BuildBreaker</title>
+    <id>BuildBreak</id>
+    <version>4.0.1</version>
+    <title>BuildBreak</title>
     <authors>Guillermo.Castrogarc</authors>
     <owners>Guillermo.Castrogarc</owners>
     <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
     <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
     <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>BuildBreaker</description>
+    <description>BuildBreak</description>
     <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
     <copyright>Copyright</copyright>
-    <tags>BuildBreaker, analyzers</tags>
+    <tags>BuildBreak, analyzers</tags>
     <frameworkAssemblies>
       <frameworkAssembly assemblyName="System" targetFramework="" />
     </frameworkAssemblies>

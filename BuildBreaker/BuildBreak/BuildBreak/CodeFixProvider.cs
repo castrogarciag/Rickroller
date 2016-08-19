@@ -13,16 +13,16 @@ using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Rename;
 using Microsoft.CodeAnalysis.Text;
 
-namespace BuildBreaker2
+namespace Analyzer1
 {
-    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(BuildBreakerCodeFixProvider)), Shared]
-    public class BuildBreakerCodeFixProvider : CodeFixProvider
+    [ExportCodeFixProvider(LanguageNames.CSharp, Name = nameof(Analyzer1CodeFixProvider)), Shared]
+    public class Analyzer1CodeFixProvider : CodeFixProvider
     {
-        private const string title = "Won't fix anything";
+        private const string title = "Make uppercase";
 
         public sealed override ImmutableArray<string> FixableDiagnosticIds
         {
-            get { return ImmutableArray.Create(BuildBreakerAnalyzer.DiagnosticId); }
+            get { return ImmutableArray.Create(Analyzer1Analyzer.DiagnosticId); }
         }
 
         public sealed override FixAllProvider GetFixAllProvider()
@@ -53,7 +53,21 @@ namespace BuildBreaker2
 
         private async Task<Solution> MakeUppercaseAsync(Document document, TypeDeclarationSyntax typeDecl, CancellationToken cancellationToken)
         {
-            return document.Project.Solution;
+            // Compute new uppercase name.
+            var identifierToken = typeDecl.Identifier;
+            var newName = identifierToken.Text.ToUpperInvariant();
+
+            // Get the symbol representing the type to be renamed.
+            var semanticModel = await document.GetSemanticModelAsync(cancellationToken);
+            var typeSymbol = semanticModel.GetDeclaredSymbol(typeDecl, cancellationToken);
+
+            // Produce a new solution that has all references to that type renamed, including the declaration.
+            var originalSolution = document.Project.Solution;
+            var optionSet = originalSolution.Workspace.Options;
+            var newSolution = await Renamer.RenameSymbolAsync(document.Project.Solution, typeSymbol, newName, optionSet, cancellationToken).ConfigureAwait(false);
+
+            // Return the new solution with the now-uppercase type name.
+            return newSolution;
         }
     }
 }
